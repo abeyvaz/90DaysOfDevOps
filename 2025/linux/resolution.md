@@ -14,8 +14,8 @@ Imagine you're managing a **Linux-based production server** and need to ensure t
 ### **1️⃣ User & Group Management**
 - Learn about Linux **users, groups, and permissions** (`/etc/passwd`, `/etc/group`).
 - **Task:**  
-  - Create a user `devops_user` and add them to a group `devops_team`.
-  - Set a password and grant **sudo** access.
+  - Create a user `devops_user` and add them to a group `devops_team`. >> sudo useradd -m devops_user    
+  - Set a password and grant **sudo** access. >> sudo passwd devops_user || sudo useradd devops_user sudo   
   - Restrict SSH login for certain users in `/etc/ssh/sshd_config`.
 
 ---
@@ -38,7 +38,7 @@ Logs are crucial in DevOps! You’ll analyze logs using the **Linux_2k.log** fil
     - Use `grep` to find all occurrences of the word **"error"**.
     - Use `awk` to extract **timestamps and log levels**.
     - Use `sed` to replace all IP addresses with **[REDACTED]** for security.
-  - **Bonus:** Find the most frequent log entry using `awk` or `sort | uniq -c | sort -nr | head -10`.
+  - **Bonus:** Find the most frequent log entry using `awk` or `sort | uniq -c | sort -nr | head -10`. >> cat file|sort -n|uniq -c|sort -n|tail -n 1|awk '{print $2}'
 
 ---
 
@@ -82,7 +82,10 @@ Logs are crucial in DevOps! You’ll analyze logs using the **Linux_2k.log** fil
 ---
 
 ## 📚 Resources to Get Started
-- [Linux In One Shot](https://youtu.be/e01GGTKmtpc?si=FSVNFRwdNC0NZeba)
+- [Linux Users & Groups](https://linuxize.com/post/how-to-create-users-and-groups-in-linux/)
+- [Linux File Permissions](https://www.redhat.com/sysadmin/linux-permissions-guide)
+- [AWK for Log Analysis](https://www.baeldung.com/linux/awk-command)
+- [Linux Volume Management](https://www.tecmint.com/create-lvm-storage-in-linux/)
 - [Linux_2k.log (LogHub)](https://github.com/logpai/loghub/blob/master/Linux/Linux_2k.log)
 
 ---
@@ -104,4 +107,3 @@ Check out my blog here: [Your Blog/GitHub Link]
 ---
 
 Happy learning, and see you in **Week 3**! 🚀
-
