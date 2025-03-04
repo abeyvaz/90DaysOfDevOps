@@ -14,8 +14,11 @@ Imagine you're managing a **Linux-based production server** and need to ensure t
 ### **1️⃣ User & Group Management**
 - Learn about Linux **users, groups, and permissions** (`/etc/passwd`, `/etc/group`).
 - **Task:**  
-  - Create a user `devops_user` and add them to a group `devops_team`. >> sudo useradd -m devops_user    
-  - Set a password and grant **sudo** access. >> sudo passwd devops_user || sudo useradd devops_user sudo   
+  - Create a user `devops_user` and add them to a group `devops_team`.
+    >> sudo addgroup devops_team
+    >> sudo useradd -a devops_user devops_team  
+  - Set a password and grant **sudo** access.
+    >> sudo passwd devops_user || sudo useradd devops_user sudo   
   - Restrict SSH login for certain users in `/etc/ssh/sshd_config`.
 
 ---
@@ -23,8 +26,11 @@ Imagine you're managing a **Linux-based production server** and need to ensure t
 ### **2️⃣ File & Directory Permissions**
 - **Task:**  
   - Create `/devops_workspace` and a file `project_notes.txt`.
+    >> mkdir devops_workspace
+    >> touch project_notes.txt
   - Set permissions:
     - **Owner can edit**, **group can read**, **others have no access**.
+    >> chmod 240 project_notes.txt
   - Use `ls -l` to verify permissions.
 
 ---
@@ -36,9 +42,13 @@ Logs are crucial in DevOps! You’ll analyze logs using the **Linux_2k.log** fil
   - **Download the log file** from the repository.
   - **Extract insights using commands:**
     - Use `grep` to find all occurrences of the word **"error"**.
+      >>  grep -c -w "error" file.txt ( -c counts the number of matches ) ( -w option ensures that only whole words are matched ) 
     - Use `awk` to extract **timestamps and log levels**.
+      >> awk '{print $1, $2}' file.txt
     - Use `sed` to replace all IP addresses with **[REDACTED]** for security.
-  - **Bonus:** Find the most frequent log entry using `awk` or `sort | uniq -c | sort -nr | head -10`. >> cat file|sort -n|uniq -c|sort -n|tail -n 1|awk '{print $2}'
+      >> 
+  - **Bonus:** Find the most frequent log entry using `awk` or `sort | uniq -c | sort -nr | head -10`.
+          >> sort|uniq -c|head -10 file.txt
 
 ---
 
